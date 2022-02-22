@@ -1,0 +1,67 @@
+﻿@model IEnumerable<CoreRepoExample_22_02_22.Models.Entity.Course>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="bg-success text-white">Kurs Listesi</div>
+<div class="card">
+    <div class="card-body">
+        <form id="filter" method="get">
+            <div class="form-group">
+                <input name="name" class="form-control" placeholder="Kurs İsmi..."/>
+            </div>
+            <div class="form-group">
+                <input name="price" class="form-control" placeholder="Kurs Fiyatı..." v />
+            </div>
+            <div class="custom-checkbox custom-control">
+                <input name="sit" class="custom-control-input" type="checkbox" id="sit"  />
+                <label class="custom-control-label" for="sit">Aktif</label>
+            </div>
+            <button class="btn btn-primary">Filtrele</button>
+        </form>
+    </div>
+</div>
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+
+            <th>Kurs İsmi</th>
+            <th>Fiyat</th>
+            <th>Durum</th>
+            <th>Durum</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.ID</td>
+
+            <td>@item.Ad</td>
+            <td>@item.Fiyat</td>
+            @if (item.Aktif == true)
+            {
+                <td style="background-color:green; width:15px"></td>
+            }
+            else
+            {
+                <td style="background-color: red; width: 15px"></td>
+
+            }
+
+            <td>
+                <a href="Course/Guncelle/@item.ID">guncelle</a> |||
+                <a href="Course/Sil/@item.ID">Sil</a>|||
+                <a href="Course/Detay/@item.ID">Detay</a>
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+
+  <a href="Course/Ekle" class="btn btn-success">Ekle</a>
+
+
