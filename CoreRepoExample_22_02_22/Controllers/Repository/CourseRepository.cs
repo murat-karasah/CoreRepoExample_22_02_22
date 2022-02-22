@@ -21,7 +21,7 @@ namespace CoreRepoExample_22_02_22.Controllers.Repository
             if (id!=null)
             {
                 var c = GetById(id);
-                db.Remove(c);
+                db.Courses.Remove(c);
                 db.SaveChanges();
 
             }
