@@ -1,0 +1,41 @@
+﻿@model CoreRepoExample_22_02_22.Models.EgitmenModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+<a href="Egitmen/Ekle" class="btn btn-success">Ekle</a>
+
+<table class="table table-hover">
+
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Ad</th>
+            <th>Adres</th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.eList)
+        {
+        <tr>
+            <td>@item.EgitmenID</td>
+            <td>@item.isim @item.Soyisim</td>
+            <td>@item.Adres.sehir / @item.Adres.ulke</td>
+          
+
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id=item.EgitmenID}) |
+                @Html.ActionLink("Details", "Details", new { id=item.EgitmenID  }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.EgitmenID  })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

@@ -1,4 +1,4 @@
-﻿@model CoreRepoExample_22_02_22.Models.Entity.Course
+﻿@model CoreRepoExample_22_02_22.Models.CourseModel
 
 @{
     ViewData["Title"] = "Detay";
@@ -10,39 +10,62 @@
     <h4>Course</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ID)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.ID)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ID)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.ID)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ad)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.Ad)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ad)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.Ad)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Aciklama)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.Aciklama)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Aciklama)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.Aciklama)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Fiyat)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.Fiyat)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Fiyat)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.Fiyat)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Aktif)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.Aktif)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Aktif)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.Aktif)
         </dd>
+
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Egitmen.isim)
+        </dt>
+
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Egitmen.isim)
+
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Egitmen.Soyisim)
+
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Egitmen.Soyisim)
+
+
+        </dd>
+
+
+
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Guncelle", "Guncelle", new {  id = Model.ID  }) |
+    @Html.ActionLink("Guncelle", "Guncelle", new {  id = Model.Course.ID  }) |
     <a asp-action="Index">Back to List</a>
 </div>

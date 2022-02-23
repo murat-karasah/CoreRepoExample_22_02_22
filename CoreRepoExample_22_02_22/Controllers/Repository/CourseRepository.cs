@@ -1,5 +1,6 @@
 ﻿using CoreRepoExample_22_02_22.Models;
 using CoreRepoExample_22_02_22.Models.Entity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,6 +69,7 @@ namespace CoreRepoExample_22_02_22.Controllers.Repository
             {
                 query = query.Where(i => i.Aktif == true);
             }
+            query = query.Include(i => i.Egitmen);
             return (query.ToList());
         }
 
@@ -76,15 +78,16 @@ namespace CoreRepoExample_22_02_22.Controllers.Repository
             return db.Courses.AsQueryable().Where(x=>x.Aktif== sit);
         }
 
-        public void UpdateCourse(Course entity)
+        public void UpdateCourse(int id,Course entity)
         {
-            var c = GetById(entity.ID);
+            var c = GetById(id);
             if (c!=null)
             {
                 c.Ad = entity.Ad;
                 c.Aciklama = entity.Aciklama;
                 c.Aktif = entity.Aktif;
                 c.Fiyat = entity.Fiyat;
+                c.EgitmenID = entity.EgitmenID;
                 db.SaveChanges();
             }
             

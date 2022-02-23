@@ -12,7 +12,7 @@ namespace CoreRepoExample_22_02_22.Controllers.Repository
         IEnumerable<Course> GetCoursesSit(bool sit);
         IEnumerable<Course> GetCoursesFiltre(string name = null, decimal? price = null, string sit = null);
 
-        void UpdateCourse(Course entity);
+        void UpdateCourse(int id,Course entity);
         void CreateCourse(Course entity);
         void CourseDelete(int id);
         Course GetById(int id);

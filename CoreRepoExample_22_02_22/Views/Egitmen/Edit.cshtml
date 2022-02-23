@@ -1,0 +1,50 @@
+﻿@model CoreRepoExample_22_02_22.Models.EgitmenModel
+
+@{
+    ViewData["Title"] = "Eğitmen Güncelle";
+}
+
+
+<h4>Eğitmen Güncelle</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Egitmen.isim" class="control-label"></label>
+                <input asp-for="Egitmen.isim" class="form-control" />
+                <span asp-validation-for="Egitmen.isim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Egitmen.Soyisim" class="control-label"></label>
+                <input asp-for="Egitmen.Soyisim" class="form-control" />
+                <span asp-validation-for="Egitmen.Soyisim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Egitmen.Adres.sehir" class="control-label"></label>
+                <input asp-for="Egitmen.Adres.sehir" class="form-control" />
+                <span asp-validation-for="Egitmen.Adres.sehir" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Egitmen.Adres.ulke" class="control-label"></label>
+                <input asp-for="Egitmen.Adres.ulke" class="form-control" />
+                <span asp-validation-for="Egitmen.Adres.ulke" class="text-danger"></span>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,4 +1,5 @@
 ﻿using CoreRepoExample_22_02_22.Controllers.Repository;
+using CoreRepoExample_22_02_22.Models;
 using CoreRepoExample_22_02_22.Models.Entity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,9 +12,12 @@ namespace CoreRepoExample_22_02_22.Controllers
     public class CourseController : Controller
     {
         private ICourseRepository rep;
-        public CourseController(ICourseRepository _rep)
+        private IEgitmenRepository erep;
+        CourseModel cm = new CourseModel();
+        public CourseController(ICourseRepository _rep, IEgitmenRepository erep = null)
         {
             rep = _rep;
+            this.erep = erep;
         }
 
         //public IActionResult Index()
@@ -35,30 +39,52 @@ namespace CoreRepoExample_22_02_22.Controllers
 
         public IActionResult Guncelle(int id)
         {
-          
-                ViewBag.Actionmode = "Guncelle";
-                return View(rep.GetById(id));
+            ViewBag.Actionmode = "Guncelle";
+
+            cm.Course = rep.GetById(id);
+            cm.eList = erep.GetEgitmenAll().ToList();
+                return View(cm);
 
            
         }
         [HttpPost]
-        public IActionResult Guncelle(Course entity)
+        public IActionResult Guncelle(int id, CourseModel entity)
         {
-            rep.UpdateCourse(entity);
+            ViewBag.Actionmode = "Guncelle";
+
+            rep.UpdateCourse(id,entity.Course);
+            
             return RedirectToAction("Index");
         }
 
         public IActionResult Ekle()
         {
+            cm.eList = erep.GetTeacher().ToList();
+            List<Course> test = rep.GetCourses().ToList();
+            foreach (var item in test)
+            {
+                if (item.EgitmenID != null)
+                {
+                    foreach (var item2 in cm.eList)
+                    {
+                        if (item.EgitmenID==item2.EgitmenID)
+                        {
+                            cm.eList.Remove(item2);
+                            break;
+                        }
+                    }
+                }
+            }
             ViewBag.Actionmode = "Ekle";
-            return View("Guncelle",new Course());
+            return View("Guncelle", cm);
         }
 
 
         [HttpPost]
-        public IActionResult Ekle(Course entity)
+        public IActionResult Ekle(CourseModel entity)
         {
-            rep.CreateCourse(entity);
+            
+            rep.CreateCourse(entity.Course);
             return RedirectToAction("Index");
         }
 
@@ -70,8 +96,10 @@ namespace CoreRepoExample_22_02_22.Controllers
 
         public IActionResult Detay(int id)
         {
-            ;
-            return View(rep.GetById(id));
+            cm.Course = rep.GetById(id);
+
+           cm.Egitmen = erep.GetEgitmenAll().FirstOrDefault(x => x.EgitmenID == cm.Course.EgitmenID);
+            return View(cm);
         }
 
     }

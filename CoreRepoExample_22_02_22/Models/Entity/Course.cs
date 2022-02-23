@@ -1,4 +1,6 @@
-﻿namespace CoreRepoExample_22_02_22.Models.Entity
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CoreRepoExample_22_02_22.Models.Entity
 {
     public class Course
     {
@@ -7,6 +9,10 @@
         public string Aciklama { get; set; }
         public decimal Fiyat { get; set; }
         public bool Aktif { get; set; }
-
+        [ForeignKey("Egitmen")]
+        public int EgitmenID { get; set; }
+        public Egitmen Egitmen{ get; set; }
+        
+        
     }
 }
