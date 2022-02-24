@@ -42,7 +42,30 @@ namespace CoreRepoExample_22_02_22.Controllers
             ViewBag.Actionmode = "Guncelle";
             cm.Course = rep.GetById(id);
             cm.eList = erep.GetEgitmenAll().ToList();
-                return View(cm);           
+            List<Course> test = rep.GetCourses().ToList();
+            foreach (var item in test)
+            {
+                if (item.EgitmenID != null)
+                {
+                    foreach (var item2 in cm.eList)
+                    {                       
+                         if (item.EgitmenID == item2.EgitmenID)
+                        {
+                            if (cm.Course.EgitmenID == item2.EgitmenID)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                cm.eList.Remove(item2);
+                                break;
+                            }                           
+                        }
+                    }
+                }
+            }
+
+            return View(cm);           
         }
         [HttpPost]
         public IActionResult Guncelle(int id, CourseModel entity)
