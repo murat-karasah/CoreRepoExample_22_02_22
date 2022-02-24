@@ -18,24 +18,18 @@ namespace CoreRepoExample_22_02_22.Controllers.Repository
         }
         public void EgitmenDel(int id)
         {
-            
             var c = GetById(id);
             int adresId = c.Adres.AdresId;
             db.Egitmen.Remove(c);
             db.SaveChanges();
-
             db.Database.ExecuteSqlInterpolated($"Exec delete_adres @AdresId={adresId}");
-
-                db.SaveChanges();
-            
+            db.SaveChanges();
         }
 
         public void CreateEgitmen(Egitmen entity)
         {
-
             if (entity.EgitmenID == 0)
             {
-
                 db.Add(entity);
                 db.SaveChanges();
             }
@@ -44,14 +38,12 @@ namespace CoreRepoExample_22_02_22.Controllers.Repository
         public Egitmen GetById(int id)
         {
             IQueryable<Egitmen> query = db.Egitmen.Include(x => x.Adres) ;
-             query.FirstOrDefault(x => x.EgitmenID == id);
-
+            query.FirstOrDefault(x => x.EgitmenID == id);
             return query.FirstOrDefault(x => x.EgitmenID == id);
         }
 
         public IEnumerable<Egitmen> GetTeacher()
         {
-            
             return db.Egitmen.ToList();
         }
 
@@ -64,7 +56,6 @@ namespace CoreRepoExample_22_02_22.Controllers.Repository
                 c.Soyisim = entity.Soyisim;
                 c.Adres.sehir = entity.Adres.sehir;
                 c.Adres.ulke = entity.Adres.ulke;
-              
                 db.SaveChanges();
             }
         }

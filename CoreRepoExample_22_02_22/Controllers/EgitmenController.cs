@@ -18,19 +18,15 @@ namespace CoreRepoExample_22_02_22.Controllers
         {
             erep = _erep;
         }
-        private ICourseRepository crep;
-
-       
+        private ICourseRepository crep;       
         public IActionResult Index()
         {
             em.eList = erep.GetEgitmenAll()
-                .Include(a => a.Adres).ToList();
-               
+                .Include(a => a.Adres).ToList();               
             return View(em);
         }
         public IActionResult Ekle()
         {
-
             return View();
         }
 
@@ -43,8 +39,7 @@ namespace CoreRepoExample_22_02_22.Controllers
 
         public IActionResult Edit(int id)
         {
-            em.Egitmen = erep.GetById(id);
-            
+            em.Egitmen = erep.GetById(id);            
             return View(em);
         }
 
@@ -53,16 +48,12 @@ namespace CoreRepoExample_22_02_22.Controllers
         {
             erep.UpdateEgitmen(id,entity.Egitmen);
             return RedirectToAction("Index");
-
         }
 
         public IActionResult Delete(int id)
         {
-
             erep.EgitmenDel(id);
-
             return RedirectToAction("Index");
-
         }
 
         public IActionResult Details(int id)

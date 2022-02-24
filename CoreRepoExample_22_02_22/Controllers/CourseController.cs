@@ -40,20 +40,15 @@ namespace CoreRepoExample_22_02_22.Controllers
         public IActionResult Guncelle(int id)
         {
             ViewBag.Actionmode = "Guncelle";
-
             cm.Course = rep.GetById(id);
             cm.eList = erep.GetEgitmenAll().ToList();
-                return View(cm);
-
-           
+                return View(cm);           
         }
         [HttpPost]
         public IActionResult Guncelle(int id, CourseModel entity)
         {
             ViewBag.Actionmode = "Guncelle";
-
-            rep.UpdateCourse(id,entity.Course);
-            
+            rep.UpdateCourse(id,entity.Course);            
             return RedirectToAction("Index");
         }
 
@@ -82,8 +77,7 @@ namespace CoreRepoExample_22_02_22.Controllers
 
         [HttpPost]
         public IActionResult Ekle(CourseModel entity)
-        {
-            
+        {            
             rep.CreateCourse(entity.Course);
             return RedirectToAction("Index");
         }
@@ -97,10 +91,8 @@ namespace CoreRepoExample_22_02_22.Controllers
         public IActionResult Detay(int id)
         {
             cm.Course = rep.GetById(id);
-
            cm.Egitmen = erep.GetEgitmenAll().FirstOrDefault(x => x.EgitmenID == cm.Course.EgitmenID);
             return View(cm);
         }
-
     }
 }

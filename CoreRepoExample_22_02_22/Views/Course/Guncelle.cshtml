@@ -33,12 +33,8 @@
                 </label>
             </div>
                 <select class="form-control" id="exampleFormControlSelect1" asp-for="Course.EgitmenID" asp-items="@(new SelectList(Model.eList,"EgitmenID","isim"))">
-                    <option value="0">--- Tür Seçiniz ---</option>
-                </select>
-              
-
-
-
+                    <option value="0">--- Eğitmen Seçiniz ---</option>
+                </select>              
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

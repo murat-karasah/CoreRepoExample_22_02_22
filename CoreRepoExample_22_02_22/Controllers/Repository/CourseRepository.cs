@@ -14,7 +14,6 @@ namespace CoreRepoExample_22_02_22.Controllers.Repository
         public CourseRepository(DataContext _db)
         {
             db = _db;
-
         }
 
         public void CourseDelete(int id)
@@ -24,13 +23,11 @@ namespace CoreRepoExample_22_02_22.Controllers.Repository
                 var c = GetById(id);
                 db.Courses.Remove(c);
                 db.SaveChanges();
-
             }
         }
 
         public void CreateCourse(Course entity)
-        {
-           
+        {           
             if (entity.ID == 0)
             {
              
@@ -89,9 +86,7 @@ namespace CoreRepoExample_22_02_22.Controllers.Repository
                 c.Fiyat = entity.Fiyat;
                 c.EgitmenID = entity.EgitmenID;
                 db.SaveChanges();
-            }
-            
-           
+            }                       
         }
     }
 }
