@@ -61,6 +61,5 @@ namespace CoreRepoExample_22_02_22.Controllers
             em.Egitmen = erep.GetById(id);
             return View(em);
         }
-
     }
 }
