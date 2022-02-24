@@ -64,7 +64,6 @@ namespace CoreRepoExample_22_02_22.Controllers
                     }
                 }
             }
-
             return View(cm);           
         }
         [HttpPost]
@@ -94,9 +93,9 @@ namespace CoreRepoExample_22_02_22.Controllers
                 }
             }
             ViewBag.Actionmode = "Ekle";
+            //cm.eList = erep.GetEgitmenAllByHakan().ToList();
             return View("Guncelle", cm);
         }
-
 
         [HttpPost]
         public IActionResult Ekle(CourseModel entity)
@@ -104,7 +103,7 @@ namespace CoreRepoExample_22_02_22.Controllers
             rep.CreateCourse(entity.Course);
             return RedirectToAction("Index");
         }
-
+         
         public IActionResult Sil(int id)
         {
             rep.CourseDelete(id);
@@ -114,7 +113,7 @@ namespace CoreRepoExample_22_02_22.Controllers
         public IActionResult Detay(int id)
         {
             cm.Course = rep.GetById(id);
-           cm.Egitmen = erep.GetEgitmenAll().FirstOrDefault(x => x.EgitmenID == cm.Course.EgitmenID);
+            cm.Egitmen = erep.GetEgitmenAll().FirstOrDefault(x => x.EgitmenID == cm.Course.EgitmenID);
             return View(cm);
         }
     }

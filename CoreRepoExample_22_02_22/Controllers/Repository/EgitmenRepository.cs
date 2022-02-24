@@ -64,5 +64,10 @@ namespace CoreRepoExample_22_02_22.Controllers.Repository
         {
             return db.Egitmen.AsQueryable();
         }
+
+        public IQueryable<Egitmen> GetEgitmenAllByHakan()
+        {
+            return db.Egitmen.AsQueryable().Where(x => x.Course.EgitmenID != x.EgitmenID);
+        }
     }
 }

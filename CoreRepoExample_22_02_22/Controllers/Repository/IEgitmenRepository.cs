@@ -14,5 +14,7 @@ namespace CoreRepoExample_22_02_22.Controllers.Repository
         void EgitmenDel(int id);
         Egitmen GetById(int id);
         IQueryable<Egitmen> GetEgitmenAll();
+        IQueryable<Egitmen> GetEgitmenAllByHakan();
+
     }
 }
