@@ -2,10 +2,24 @@
 
 namespace CoreRepoExample_22_02_22.Migrations
 {
-    public partial class dasdsadsdadgdg : Migration
+    public partial class asddsa : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Admin",
+                columns: table => new
+                {
+                    adminID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    username = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    pass = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Admin", x => x.adminID);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Adres",
                 columns: table => new
@@ -94,6 +108,9 @@ namespace CoreRepoExample_22_02_22.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Admin");
+
             migrationBuilder.DropTable(
                 name: "Courses");
 

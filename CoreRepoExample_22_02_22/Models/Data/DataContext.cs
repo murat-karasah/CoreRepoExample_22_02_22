@@ -12,6 +12,7 @@ namespace CoreRepoExample_22_02_22.Models
         public DbSet<Request> Requests { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Egitmen> Egitmen{ get; set; }
+        public DbSet<Admin> Admin{ get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

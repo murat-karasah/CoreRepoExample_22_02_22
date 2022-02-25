@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoreRepoExample_22_02_22.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220223075832_dasdsadsdadgdg")]
-    partial class dasdsadsdadgdg
+    [Migration("20220225064823_asddsa")]
+    partial class asddsa
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,24 @@ namespace CoreRepoExample_22_02_22.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.14")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("CoreRepoExample_22_02_22.Models.Entity.Admin", b =>
+                {
+                    b.Property<int>("adminID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("pass")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("adminID");
+
+                    b.ToTable("Admin");
+                });
 
             modelBuilder.Entity("CoreRepoExample_22_02_22.Models.Entity.Adres", b =>
                 {

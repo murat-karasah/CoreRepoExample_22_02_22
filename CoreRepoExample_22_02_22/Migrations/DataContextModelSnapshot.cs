@@ -19,6 +19,24 @@ namespace CoreRepoExample_22_02_22.Migrations
                 .HasAnnotation("ProductVersion", "5.0.14")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("CoreRepoExample_22_02_22.Models.Entity.Admin", b =>
+                {
+                    b.Property<int>("adminID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("pass")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("adminID");
+
+                    b.ToTable("Admin");
+                });
+
             modelBuilder.Entity("CoreRepoExample_22_02_22.Models.Entity.Adres", b =>
                 {
                     b.Property<int>("AdresId")

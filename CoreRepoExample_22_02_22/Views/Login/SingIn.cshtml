@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "SingIn";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<div class="row justify-content-md-center">
+    <div class="col-12">
+        <form action="SingIn" method="post">
+            <div class="col-6">
+                <label class="col-form-label">Kullanıcı Adı</label>
+                <input name="username" class="form-control" />
+            </div>
+            <div class="col-6">
+                <label class="col-form-label">Şifre</label>
+                <input name="pass" type="password" class="form-control" />
+                <div class="col-6">
+
+                    <button type="submit" class="btn btn-success">Giriş</button>
+                </div>
+                </div>
+        </form>
+    </div>
+</div>
+
+
